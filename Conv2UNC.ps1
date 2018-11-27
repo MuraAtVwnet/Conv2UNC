@@ -25,3 +25,13 @@
 	$OutputEncoding = New-Object System.Text.ASCIIEncoding
 }
 
+# echo $args.Count
+# echo $args
+# pause
+
+if( $args.Count -eq 1 ){
+	Conv2UNC $args[0]
+}
+else{
+	echo "ファイル名が正しくありません: $args"
+}
