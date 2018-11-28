@@ -11,12 +11,12 @@ $PowerShellPath = cmd /c where powershell
 $ScriptPath = Join-Path $PSScriptRoot "Conv2UNC.ps1"
 
 # ショートカットコマンドライン
-# $ChortcutCommandLine = $PowerShellPath + " $ScriptPath"
+$ChortcutCommandLine = "-WindowStyle Hidden -NonInteractive -NoProfile -NoLogo -File $ScriptPath"
 
 # ショートカットを作る
 $WsShell = New-Object -ComObject WScript.Shell
 $Shortcut = $WsShell.CreateShortcut($LinkFullPath)
 $Shortcut.TargetPath = $PowerShellPath
-$Shortcut.Arguments = $ScriptPath
+$Shortcut.Arguments = $ChortcutCommandLine
 $Shortcut.IconLocation = $PowerShellPath
 $Shortcut.Save()
