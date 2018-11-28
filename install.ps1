@@ -19,4 +19,5 @@ $Shortcut = $WsShell.CreateShortcut($LinkFullPath)
 $Shortcut.TargetPath = $PowerShellPath
 $Shortcut.Arguments = $ChortcutCommandLine
 $Shortcut.IconLocation = $PowerShellPath
+$Shortcut.WindowStyle = 7
 $Shortcut.Save()
