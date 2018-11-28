@@ -25,14 +25,17 @@ function ConvL2P( $TergetPath ){
 ###########################################################
 # URI にし、クリップボートに転送
 ###########################################################
-function SetURI2Clip($PhysicalPath){
-	$URI = "<file://" + $PhysicalPath + ">"
+function SetURI2Clip($PhysicalPaths){
+	$URIs = @()
+	foreach( $PhysicalPath in $PhysicalPaths ){
+		$URIs += "<file://" + $PhysicalPath + ">"
+	}
 
 	# エンコードを S-JIS に変更
 	$OutputEncoding = [Console]::OutputEncoding
 
 	# リップボードへ
-	$URI | clip
+	$URIs | clip
 
 	# エンコードを US-ASCII に戻す
 	$OutputEncoding = New-Object System.Text.ASCIIEncoding
@@ -43,10 +46,13 @@ function SetURI2Clip($PhysicalPath){
 # main
 ###########################################################
 
-if( $args.Count -eq 1 ){
-	$PhysicalPath = ConvL2P $args[0]
-	SetURI2Clip $PhysicalPath
+if( $args.Count -ne 0 ){
+	$PhysicalPaths = @()
+	foreach( $arg in $args ){
+		$PhysicalPaths += ConvL2P $arg
+	}
+	SetURI2Clip $PhysicalPaths
 }
 else{
-	echo "ファイル名が正しくありません: $args"
+	echo "ファイル名が指定されていません"
 }
