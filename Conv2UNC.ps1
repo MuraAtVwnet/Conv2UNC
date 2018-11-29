@@ -53,6 +53,3 @@ if( $args.Count -ne 0 ){
 	}
 	SetURI2Clip $PhysicalPaths
 }
-else{
-	echo "ファイル名が指定されていません"
-}
