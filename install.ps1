@@ -11,7 +11,7 @@ $PowerShellPath = cmd /c where powershell
 $ScriptPath = Join-Path $PSScriptRoot "Conv2UNC.ps1"
 
 # ショートカットコマンドライン
-$ChortcutCommandLine = "-WindowStyle Hidden -NonInteractive -NoProfile -NoLogo -File $ScriptPath"
+$ChortcutCommandLine = "-NoProfile -NoLogo -File $ScriptPath"
 
 # ショートカットを作る
 $WsShell = New-Object -ComObject WScript.Shell
