@@ -13,5 +13,5 @@ $SendToDirectory = Join-Path $env:APPDATA "\Microsoft\Windows\SendTo"
 $LinkFullPath = Join-Path $SendToDirectory "Path to URI.lnk"
 
 if( Test-Path $LinkFullPath ){
-	Remove-Item $LinkFullPath
+	Remove-Item $LinkFullPath -Force -Recurse
 }
